@@ -51,7 +51,7 @@ const mapStateToProps = state => {
   return {
     timer: state.timer.timer,
     initialTimer: state.timer.initialTimer,
-  }
+  };
 };
 
 export default connect(mapStateToProps)(Timer);

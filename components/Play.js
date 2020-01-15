@@ -58,7 +58,7 @@ class Play extends React.Component {
                       style: 'cancel',
                     },
                   ],
-                  { cancelable: true }
+                  { cancelable: true },
                 );
               }
               this.props.changePlay();
@@ -117,7 +117,7 @@ const mapStateToProps = state => {
     playPressed: state.timer.playPressed,
     timer: state.timer.timer,
     initialTimer: state.timer.initialTimer,
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -129,7 +129,7 @@ const mapDispatchToProps = dispatch => {
     changePlay: () => dispatch({ type: actionTypes.CHANGE_PLAY }),
     decreaseTimer: () => dispatch({ type: actionTypes.DECREASE_TIMER }),
     resetTimer: () => dispatch({ type: actionTypes.RESET_TIMER }),
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Play);

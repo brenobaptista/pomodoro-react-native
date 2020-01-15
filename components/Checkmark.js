@@ -47,7 +47,7 @@ const mapStateToProps = state => {
     check2: state.check.checkmark2,
     check3: state.check.checkmark3,
     check4: state.check.checkmark4,
-  }
+  };
 };
 
 export default connect(mapStateToProps)(Checkmark);
