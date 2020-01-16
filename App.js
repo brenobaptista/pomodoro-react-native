@@ -5,10 +5,14 @@ import { createStore, combineReducers } from 'redux';
 import Index from './components/Index';
 import checkmarkReducer from './store/reducers/checkmark';
 import timerReducer from './store/reducers/timer';
+import shortBreakReducer from './store/reducers/shortBreak';
+import longBreakReducer from './store/reducers/longBreak';
 
 const rootReducer = combineReducers({
   check: checkmarkReducer,
   timer: timerReducer,
+  shortBreak: shortBreakReducer,
+  longBreak: longBreakReducer,
 });
 
 const store = createStore(rootReducer);

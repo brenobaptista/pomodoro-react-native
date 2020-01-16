@@ -17,3 +17,21 @@ export const resetTimer = () => {
     type: actionTypes.RESET_TIMER,
   };
 };
+
+export const shortBreakMode = () => {
+  return {
+    type: actionTypes.SHORT_BREAK_MODE,
+  }
+}
+
+export const longBreakMode = () => {
+  return {
+    type: actionTypes.LONG_BREAK_MODE,
+  }
+}
+
+export const timerMode = () => {
+  return {
+    type: actionTypes.TIMER_MODE,
+  }
+}

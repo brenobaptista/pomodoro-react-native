@@ -3,8 +3,6 @@ import { Text, View, StyleSheet } from 'react-native';
 import AnimatedProgressWheel from 'react-native-progress-wheel';
 import { connect } from 'react-redux';
 
-import * as actionTypes from '../store/actions/actionTypes';
-
 class Timer extends React.Component {
   formatNumber = number => {
     return ('0' + number).slice(-2);

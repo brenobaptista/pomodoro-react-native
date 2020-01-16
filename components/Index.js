@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { connect } from 'react-redux';
 
 import Checkmark from './Checkmark';
 import Play from './Play';
 import Timer from './Timer';
+import ShortBreak from './ShortBreak';
+import ShortBreakPlay from './ShortBreakPlay';
+import LongBreak from './LongBreak';
+import LongBreakPlay from './LongBreakPlay';
 
 class Index extends React.Component {
   render() {
@@ -17,8 +22,17 @@ class Index extends React.Component {
           style={styles.container}>
           <View style={styles.card}>
             <Checkmark />
-            <Timer />
-            <Play />
+
+            {this.props.isLongBreakMode ? (
+              <View><LongBreak /><LongBreakPlay /></View>
+            ) : (
+              this.props.isShortBreakMode ? (
+                <View><ShortBreak /><ShortBreakPlay /></View>
+              ) : (
+                <View><Timer /><Play /></View>
+              )
+            )}
+            
           </View>
         </LinearGradient>
       </View>
@@ -48,4 +62,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Index;
+const mapStateToProps = state => {
+  return {
+    isShortBreakMode: state.timer.isShortBreakMode,
+    isLongBreakMode: state.timer.isLongBreakMode,
+  };
+};
+
+export default connect(mapStateToProps)(Index);

@@ -23,3 +23,9 @@ export const checkmark4 = () => {
     type: actionTypes.CHECKMARK4,
   };
 };
+
+export const resetCheckmarks = () => {
+  return {
+    type: actionTypes.RESET_CHECKMARKS,
+  };
+};

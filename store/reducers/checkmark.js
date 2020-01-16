@@ -29,6 +29,14 @@ const checkmarkReducer = (state = initialState, action) => {
         ...state,
         checkmark4: true,
       };
+    case actionTypes.RESET_CHECKMARKS:
+      return {
+        ...state,
+        checkmark1: false,
+        checkmark2: false,
+        checkmark3: false,
+        checkmark4: false,
+      };
     default:
       return state;
   }

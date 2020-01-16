@@ -16,12 +16,16 @@ class Play extends React.Component {
         clearInterval(timerId);
         this.props.changePlay();
         if (this.props.check3) {
+          this.props.longBreakMode();
           this.props.checkmark4();
         } else if (this.props.check2) {
+          this.props.shortBreakMode();
           this.props.checkmark3();
         } else if (this.props.check1) {
+          this.props.shortBreakMode();
           this.props.checkmark2();
         } else {
+          this.props.shortBreakMode();
           this.props.checkmark1();
         }
       }
@@ -48,7 +52,6 @@ class Play extends React.Component {
                       text: 'Reset This Checkpoint',
                       onPress: () => {
                         this.props.resetTimer();
-                        this.props.changePlay();
                       },
                       style: 'destructive',
                     },
@@ -129,6 +132,8 @@ const mapDispatchToProps = dispatch => {
     changePlay: () => dispatch({ type: actionTypes.CHANGE_PLAY }),
     decreaseTimer: () => dispatch({ type: actionTypes.DECREASE_TIMER }),
     resetTimer: () => dispatch({ type: actionTypes.RESET_TIMER }),
+    shortBreakMode: () => dispatch({ type: actionTypes.SHORT_BREAK_MODE }),
+    longBreakMode: () => dispatch({ type: actionTypes.LONG_BREAK_MODE }),
   };
 };
 
