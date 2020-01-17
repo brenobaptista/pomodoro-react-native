@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 
 import * as actionTypes from '../store/actions/actionTypes';
 
-class Play extends React.Component {
+class Play extends Component {
   startTimer = () => {
     const maintainTimer = () => {
       if (!this.props.playPressed) {
@@ -15,6 +15,7 @@ class Play extends React.Component {
       } else {
         clearInterval(timerId);
         this.props.changePlay();
+        this.props.activateAlarm();
         if (this.props.check3) {
           this.props.longBreakMode();
           this.props.checkmark4();
@@ -42,6 +43,7 @@ class Play extends React.Component {
             style={styles.play}
             onPress={() => {
               if (!this.props.playPressed) {
+                this.props.cancelAlarm();
                 this.startTimer();
               } else {
                 Alert.alert(
@@ -69,16 +71,16 @@ class Play extends React.Component {
             {this.props.playPressed ? (
               <FontAwesome5
                 name="stop"
-                size={25}
+                size={30}
                 color="white"
-                style={{ textAlign: 'center' }}
+                style={{ textAlign: 'center', paddingLeft: 1, paddingTop: 3 }}
               />
             ) : (
               <FontAwesome5
                 name="play"
-                size={25}
+                size={30}
                 color="white"
-                style={{ textAlign: 'center', paddingLeft: 5 }}
+                style={{ textAlign: 'center', paddingLeft: 7, paddingTop: 2 }}
               />
             )}
           </TouchableOpacity>
@@ -90,10 +92,10 @@ class Play extends React.Component {
 
 const styles = StyleSheet.create({
   play: {
-    backgroundColor: '#ff7057',
-    borderRadius: 35,
-    height: 70,
-    width: 70,
+    backgroundColor: 'tomato',
+    borderRadius: 40,
+    height: 80,
+    width: 80,
     justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
   playContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    top: 51,
+    top: 55,
   },
 });
 
@@ -134,6 +136,8 @@ const mapDispatchToProps = dispatch => {
     resetTimer: () => dispatch({ type: actionTypes.RESET_TIMER }),
     shortBreakMode: () => dispatch({ type: actionTypes.SHORT_BREAK_MODE }),
     longBreakMode: () => dispatch({ type: actionTypes.LONG_BREAK_MODE }),
+    activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
+    cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
   };
 };
 

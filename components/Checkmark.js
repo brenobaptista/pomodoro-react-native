@@ -1,38 +1,36 @@
-import * as React from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import { connect } from 'react-redux';
 
-class Checkmark extends React.Component {
-  render() {
-    return (
-      <View>
-        <View style={styles.row}>
-          <Feather
-            name={this.props.check1 ? 'check-square' : 'square'}
-            size={35}
-            color="#4a4a4a"
-          />
-          <Feather
-            name={this.props.check2 ? 'check-square' : 'square'}
-            size={35}
-            color="#4a4a4a"
-          />
-          <Feather
-            name={this.props.check3 ? 'check-square' : 'square'}
-            size={35}
-            color="#4a4a4a"
-          />
-          <Feather
-            name={this.props.check4 ? 'check-square' : 'square'}
-            size={35}
-            color="#4a4a4a"
-          />
-        </View>
+const Checkmark = (props) => {
+  return (
+    <View>
+      <View style={styles.row}>
+        <Feather
+          name={props.check1 ? 'check-square' : 'square'}
+          size={35}
+          color="#4a4a4a"
+        />
+        <Feather
+          name={props.check2 ? 'check-square' : 'square'}
+          size={35}
+          color="#4a4a4a"
+        />
+        <Feather
+          name={props.check3 ? 'check-square' : 'square'}
+          size={35}
+          color="#4a4a4a"
+        />
+        <Feather
+          name={props.check4 ? 'check-square' : 'square'}
+          size={35}
+          color="#4a4a4a"
+        />
       </View>
-    );
-  }
-}
+    </View>
+  )
+};
 
 const styles = StyleSheet.create({
   row: {

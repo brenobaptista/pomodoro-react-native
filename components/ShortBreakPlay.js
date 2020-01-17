@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 
 import * as actionTypes from '../store/actions/actionTypes';
 
-class ShortBreakPlay extends React.Component {
+class ShortBreakPlay extends Component {
   startTimer = () => {
     const maintainTimer = () => {
       if (!this.props.playPressed) {
@@ -15,6 +15,7 @@ class ShortBreakPlay extends React.Component {
       } else {
         clearInterval(timerId);
         this.props.changePlayShortBreak();
+        this.props.activateAlarm();
         this.props.timerMode();
         this.props.resetTimerShortBreak();
       }
@@ -31,6 +32,7 @@ class ShortBreakPlay extends React.Component {
             style={styles.play}
             onPress={() => {
               if (!this.props.playPressed) {
+                this.props.cancelAlarm();
                 this.startTimer();
               } else {
                 Alert.alert(
@@ -79,7 +81,7 @@ class ShortBreakPlay extends React.Component {
 
 const styles = StyleSheet.create({
   play: {
-    backgroundColor: '#ff7057',
+    backgroundColor: 'tomato',
     borderRadius: 35,
     height: 70,
     width: 70,
@@ -114,6 +116,8 @@ const mapDispatchToProps = dispatch => {
     decreaseTimerShortBreak: () => dispatch({ type: actionTypes.DECREASE_TIMER_SHORT_BREAK }),
     resetTimerShortBreak: () => dispatch({ type: actionTypes.RESET_TIMER_SHORT_BREAK }),
     timerMode: () => dispatch({ type: actionTypes.TIMER_MODE }),
+    activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
+    cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
   };
 };
 

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, Vibration } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { connect } from 'react-redux';
 
@@ -11,33 +11,44 @@ import ShortBreakPlay from './ShortBreakPlay';
 import LongBreak from './LongBreak';
 import LongBreakPlay from './LongBreakPlay';
 
-class Index extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <LinearGradient
-          colors={['#93C6F9', '#97B4FA', '#A768FE']}
-          start={[0, 0]}
-          end={[1, 1]}
-          style={styles.container}>
-          <View style={styles.card}>
-            <Checkmark />
+const Index = (props) => {
+  useEffect(() => {
+    const PATTERN = [1000, 1000, 1000];
 
-            {this.props.isLongBreakMode ? (
-              <View><LongBreak /><LongBreakPlay /></View>
+    if (props.ringAlarm) {
+      Vibration.vibrate(PATTERN, true);
+      setTimeout(() => {
+        Vibration.cancel(); 
+      }, 60000);
+    } else {
+      Vibration.cancel();
+    }
+  }, [props.ringAlarm])
+
+  return (
+    <View style={{ flex: 1 }}>
+      <LinearGradient
+        colors={['#BAF4FF', '#94EFFF', '#6DE9FF', '#47E3FF']}
+        start={[0, 0]}
+        end={[1, 1]}
+        style={styles.container}>
+        <View style={styles.card}>
+          <Checkmark />
+
+          {props.isLongBreakMode ? (
+            <View><LongBreak /><LongBreakPlay /></View>
+          ) : (
+            props.isShortBreakMode ? (
+              <View><ShortBreak /><ShortBreakPlay /></View>
             ) : (
-              this.props.isShortBreakMode ? (
-                <View><ShortBreak /><ShortBreakPlay /></View>
-              ) : (
-                <View><Timer /><Play /></View>
-              )
-            )}
-            
-          </View>
-        </LinearGradient>
-      </View>
-    );
-  }
+              <View><Timer /><Play /></View>
+            )
+          )}
+          
+        </View>
+      </LinearGradient>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -66,6 +77,7 @@ const mapStateToProps = state => {
   return {
     isShortBreakMode: state.timer.isShortBreakMode,
     isLongBreakMode: state.timer.isLongBreakMode,
+    ringAlarm: state.alarm.ringAlarm,
   };
 };
 

@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 
 import * as actionTypes from '../store/actions/actionTypes';
 
-class LongBreakPlay extends React.Component {
+class LongBreakPlay extends Component {
   startTimer = () => {
     const maintainTimer = () => {
       if (!this.props.playPressed) {
@@ -15,6 +15,7 @@ class LongBreakPlay extends React.Component {
       } else {
         clearInterval(timerId);
         this.props.changePlayLongBreak();
+        this.props.activateAlarm();
         this.props.timerMode();
         this.props.resetTimerLongBreak();
         this.props.resetCheckmarks();
@@ -32,6 +33,7 @@ class LongBreakPlay extends React.Component {
             style={styles.play}
             onPress={() => {
               if (!this.props.playPressed) {
+                this.props.cancelAlarm();
                 this.startTimer();
               } else {
                 Alert.alert(
@@ -80,7 +82,7 @@ class LongBreakPlay extends React.Component {
 
 const styles = StyleSheet.create({
   play: {
-    backgroundColor: '#ff7057',
+    backgroundColor: 'tomato',
     borderRadius: 35,
     height: 70,
     width: 70,
@@ -116,6 +118,8 @@ const mapDispatchToProps = dispatch => {
     resetTimerLongBreak: () => dispatch({ type: actionTypes.RESET_TIMER_LONG_BREAK }),
     timerMode: () => dispatch({ type: actionTypes.TIMER_MODE }),
     resetCheckmarks: () => dispatch({ type: actionTypes.RESET_CHECKMARKS }),
+    activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
+    cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
   };
 };
 
