@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkmark Rendering should match to snapshot - False: False checkmark snapshot 1`] = `
+exports[`Testing Checkmark Component should match to snapshot - False: False checkmark snapshot 1`] = `
 <View>
   <Icon
     allowFontScaling={false}
@@ -11,7 +11,7 @@ exports[`Checkmark Rendering should match to snapshot - False: False checkmark s
 </View>
 `;
 
-exports[`Checkmark Rendering should match to snapshot - True: True checkmark snapshot 1`] = `
+exports[`Testing Checkmark Component should match to snapshot - True: True checkmark snapshot 1`] = `
 <View>
   <Icon
     allowFontScaling={false}
