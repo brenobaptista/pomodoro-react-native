@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 
-import * as actionTypes from '../store/actions/actionTypes';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 class ShortBreakPlay extends Component {
   startTimer = () => {
@@ -60,16 +60,16 @@ class ShortBreakPlay extends Component {
             {this.props.playPressed ? (
               <FontAwesome5
                 name="stop"
-                size={25}
+                size={30}
                 color="white"
-                style={{ textAlign: 'center' }}
+                style={{ textAlign: 'center', paddingLeft: 1, paddingTop: 3 }}
               />
             ) : (
               <FontAwesome5
                 name="play"
-                size={25}
+                size={30}
                 color="white"
-                style={{ textAlign: 'center', paddingLeft: 5 }}
+                style={{ textAlign: 'center', paddingLeft: 7, paddingTop: 2 }}
               />
             )}
           </TouchableOpacity>
@@ -82,9 +82,9 @@ class ShortBreakPlay extends Component {
 const styles = StyleSheet.create({
   play: {
     backgroundColor: 'tomato',
-    borderRadius: 35,
-    height: 70,
-    width: 70,
+    borderRadius: 40,
+    height: 80,
+    width: 80,
     justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -112,9 +112,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changePlayShortBreak: () => dispatch({ type: actionTypes.CHANGE_PLAY_SHORT_BREAK }),
-    decreaseTimerShortBreak: () => dispatch({ type: actionTypes.DECREASE_TIMER_SHORT_BREAK }),
-    resetTimerShortBreak: () => dispatch({ type: actionTypes.RESET_TIMER_SHORT_BREAK }),
+    changePlayShortBreak: () =>
+      dispatch({ type: actionTypes.CHANGE_PLAY_SHORT_BREAK }),
+    decreaseTimerShortBreak: () =>
+      dispatch({ type: actionTypes.DECREASE_TIMER_SHORT_BREAK }),
+    resetTimerShortBreak: () =>
+      dispatch({ type: actionTypes.RESET_TIMER_SHORT_BREAK }),
     timerMode: () => dispatch({ type: actionTypes.TIMER_MODE }),
     activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
     cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),

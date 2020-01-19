@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 
-import * as actionTypes from '../store/actions/actionTypes';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 class LongBreakPlay extends Component {
   startTimer = () => {
@@ -61,16 +61,16 @@ class LongBreakPlay extends Component {
             {this.props.playPressed ? (
               <FontAwesome5
                 name="stop"
-                size={25}
+                size={30}
                 color="white"
-                style={{ textAlign: 'center' }}
+                style={{ textAlign: 'center', paddingLeft: 1, paddingTop: 3 }}
               />
             ) : (
               <FontAwesome5
                 name="play"
-                size={25}
+                size={30}
                 color="white"
-                style={{ textAlign: 'center', paddingLeft: 5 }}
+                style={{ textAlign: 'center', paddingLeft: 7, paddingTop: 2 }}
               />
             )}
           </TouchableOpacity>
@@ -83,9 +83,9 @@ class LongBreakPlay extends Component {
 const styles = StyleSheet.create({
   play: {
     backgroundColor: 'tomato',
-    borderRadius: 35,
-    height: 70,
-    width: 70,
+    borderRadius: 40,
+    height: 80,
+    width: 80,
     justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -113,9 +113,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changePlayLongBreak: () => dispatch({ type: actionTypes.CHANGE_PLAY_LONG_BREAK }),
-    decreaseTimerLongBreak: () => dispatch({ type: actionTypes.DECREASE_TIMER_LONG_BREAK }),
-    resetTimerLongBreak: () => dispatch({ type: actionTypes.RESET_TIMER_LONG_BREAK }),
+    changePlayLongBreak: () =>
+      dispatch({ type: actionTypes.CHANGE_PLAY_LONG_BREAK }),
+    decreaseTimerLongBreak: () =>
+      dispatch({ type: actionTypes.DECREASE_TIMER_LONG_BREAK }),
+    resetTimerLongBreak: () =>
+      dispatch({ type: actionTypes.RESET_TIMER_LONG_BREAK }),
     timerMode: () => dispatch({ type: actionTypes.TIMER_MODE }),
     resetCheckmarks: () => dispatch({ type: actionTypes.RESET_CHECKMARKS }),
     activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkmark Rendering should match to snapshot - False: False checkmark snapshot 1`] = `
+<View>
+  <Icon
+    allowFontScaling={false}
+    color="#4a4a4a"
+    name="square"
+    size={35}
+  />
+</View>
+`;
+
+exports[`Checkmark Rendering should match to snapshot - True: True checkmark snapshot 1`] = `
+<View>
+  <Icon
+    allowFontScaling={false}
+    color="#4a4a4a"
+    name="check-square"
+    size={35}
+  />
+</View>
+`;

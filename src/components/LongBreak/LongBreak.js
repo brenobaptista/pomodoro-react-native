@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import AnimatedProgressWheel from 'react-native-progress-wheel';
 import { connect } from 'react-redux';
 
-import formatNumber from '../utils/formatNumber';
+import formatNumber from '../../utils/formatNumber';
 
 const LongBreak = (props) => {
   return (

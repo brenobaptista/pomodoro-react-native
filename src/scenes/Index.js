@@ -3,13 +3,13 @@ import { View, StyleSheet, Vibration } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { connect } from 'react-redux';
 
-import Checkmark from '../components/Checkmark';
-import Play from '../components/Play';
-import Timer from '../components/Timer';
-import ShortBreak from '../components/ShortBreak';
-import ShortBreakPlay from '../components/ShortBreakPlay';
-import LongBreak from '../components/LongBreak';
-import LongBreakPlay from '../components/LongBreakPlay';
+import CheckmarkRow from '../components/Checkmark/CheckmarkRow';
+import Play from '../components/Timer/Play';
+import Timer from '../components/Timer/Timer';
+import ShortBreak from '../components/ShortBreak/ShortBreak';
+import ShortBreakPlay from '../components/ShortBreak/ShortBreakPlay';
+import LongBreak from '../components/LongBreak/LongBreak';
+import LongBreakPlay from '../components/LongBreak/LongBreakPlay';
 
 const Index = (props) => {
   useEffect(() => {
@@ -33,7 +33,7 @@ const Index = (props) => {
         end={[1, 1]}
         style={styles.container}>
         <View style={styles.card}>
-          <Checkmark />
+          <CheckmarkRow />
 
           {props.isLongBreakMode ? (
             <View><LongBreak /><LongBreakPlay /></View>
