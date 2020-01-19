@@ -2,30 +2,31 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import AnimatedProgressWheel from 'react-native-progress-wheel';
 import { connect } from 'react-redux';
+
 import formatNumber from '../utils/formatNumber';
 
-const ShortBreak = (props) => {
+const LongBreak = (props) => {
   return (
     <View>
       <View style={{ top: 20 }}>
         <Text style={styles.timerText}>
-          SHORT BREAK
+          LONG BREAK
         </Text>
       </View>
       <View style={{ top: 120 }}>
         <Text style={styles.timerText}>
-          {formatNumber(Math.floor(props.shortBreak / 60))} :{' '}
-          {formatNumber(props.shortBreak % 60)}
+          {formatNumber(Math.floor(props.longBreak / 60))} :{' '}
+          {formatNumber(props.longBreak % 60)}
         </Text>
       </View>
       <View style={styles.timerContainer}>
         <AnimatedProgressWheel
           size={200}
           width={5}
-          progress={(props.shortBreak / props.initialShortBreak) * 100}
+          progress={(props.longBreak / props.initialLongBreak) * 100}
           color={'tomato'}
           fullColor={'#94EFFF'}
-          backgroundColor={'#ededed'}
+          backgroundColor={'#ccc'}
         />
       </View>
     </View>
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
   },
   timerText: {
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 30,
     fontWeight: 'bold',
     color: '#4a4a4a',
   },
@@ -47,9 +48,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    shortBreak: state.shortBreak.shortBreak,
-    initialShortBreak: state.shortBreak.initialShortBreak,
+    longBreak: state.longBreak.longBreak,
+    initialLongBreak: state.longBreak.initialLongBreak,
   };
 };
 
-export default connect(mapStateToProps)(ShortBreak);
+export default connect(mapStateToProps)(LongBreak);

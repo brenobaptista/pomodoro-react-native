@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import AnimatedProgressWheel from 'react-native-progress-wheel';
 import { connect } from 'react-redux';
+
 import formatNumber from '../utils/formatNumber';
 
 const Timer = (props) => {
@@ -20,7 +21,7 @@ const Timer = (props) => {
           progress={(props.timer / props.initialTimer) * 100}
           color={'tomato'}
           fullColor={'#94EFFF'}
-          backgroundColor={'#ededed'}
+          backgroundColor={'#ccc'}
         />
       </View>
     </View>

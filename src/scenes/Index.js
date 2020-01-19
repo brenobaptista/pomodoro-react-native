@@ -3,13 +3,13 @@ import { View, StyleSheet, Vibration } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { connect } from 'react-redux';
 
-import Checkmark from './Checkmark';
-import Play from './Play';
-import Timer from './Timer';
-import ShortBreak from './ShortBreak';
-import ShortBreakPlay from './ShortBreakPlay';
-import LongBreak from './LongBreak';
-import LongBreakPlay from './LongBreakPlay';
+import Checkmark from '../components/Checkmark';
+import Play from '../components/Play';
+import Timer from '../components/Timer';
+import ShortBreak from '../components/ShortBreak';
+import ShortBreakPlay from '../components/ShortBreakPlay';
+import LongBreak from '../components/LongBreak';
+import LongBreakPlay from '../components/LongBreakPlay';
 
 const Index = (props) => {
   useEffect(() => {
