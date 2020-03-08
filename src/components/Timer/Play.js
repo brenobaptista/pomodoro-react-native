@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import {
+  View, StyleSheet, TouchableOpacity, Alert,
+} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 
@@ -67,7 +69,8 @@ class Play extends Component {
                 );
               }
               this.props.changePlay();
-            }}>
+            }}
+          >
             {this.props.playPressed ? (
               <FontAwesome5
                 name="stop"
@@ -113,32 +116,28 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
-  return {
-    check1: state.check.checkmark1,
-    check2: state.check.checkmark2,
-    check3: state.check.checkmark3,
-    check4: state.check.checkmark4,
-    playPressed: state.timer.playPressed,
-    timer: state.timer.timer,
-    initialTimer: state.timer.initialTimer,
-  };
-};
+const mapStateToProps = (state) => ({
+  check1: state.check.checkmark1,
+  check2: state.check.checkmark2,
+  check3: state.check.checkmark3,
+  check4: state.check.checkmark4,
+  playPressed: state.timer.playPressed,
+  timer: state.timer.timer,
+  initialTimer: state.timer.initialTimer,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    checkmark1: () => dispatch({ type: actionTypes.CHECKMARK1 }),
-    checkmark2: () => dispatch({ type: actionTypes.CHECKMARK2 }),
-    checkmark3: () => dispatch({ type: actionTypes.CHECKMARK3 }),
-    checkmark4: () => dispatch({ type: actionTypes.CHECKMARK4 }),
-    changePlay: () => dispatch({ type: actionTypes.CHANGE_PLAY }),
-    decreaseTimer: () => dispatch({ type: actionTypes.DECREASE_TIMER }),
-    resetTimer: () => dispatch({ type: actionTypes.RESET_TIMER }),
-    shortBreakMode: () => dispatch({ type: actionTypes.SHORT_BREAK_MODE }),
-    longBreakMode: () => dispatch({ type: actionTypes.LONG_BREAK_MODE }),
-    activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
-    cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  checkmark1: () => dispatch({ type: actionTypes.CHECKMARK1 }),
+  checkmark2: () => dispatch({ type: actionTypes.CHECKMARK2 }),
+  checkmark3: () => dispatch({ type: actionTypes.CHECKMARK3 }),
+  checkmark4: () => dispatch({ type: actionTypes.CHECKMARK4 }),
+  changePlay: () => dispatch({ type: actionTypes.CHANGE_PLAY }),
+  decreaseTimer: () => dispatch({ type: actionTypes.DECREASE_TIMER }),
+  resetTimer: () => dispatch({ type: actionTypes.RESET_TIMER }),
+  shortBreakMode: () => dispatch({ type: actionTypes.SHORT_BREAK_MODE }),
+  longBreakMode: () => dispatch({ type: actionTypes.LONG_BREAK_MODE }),
+  activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
+  cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Play);

@@ -33,6 +33,5 @@ exports[`Testing Timer Component should match to snapshot: Timer snapshot 1`] = 
   }
 >
   <Connect(Timer) />
-  ,
 </ContextProvider>
 `;

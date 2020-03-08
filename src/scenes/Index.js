@@ -18,12 +18,12 @@ const Index = (props) => {
     if (props.ringAlarm) {
       Vibration.vibrate(PATTERN, true);
       setTimeout(() => {
-        Vibration.cancel(); 
+        Vibration.cancel();
       }, 60000);
     } else {
       Vibration.cancel();
     }
-  }, [props.ringAlarm])
+  }, [props.ringAlarm]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -31,25 +31,35 @@ const Index = (props) => {
         colors={['#BAF4FF', '#94EFFF', '#6DE9FF', '#47E3FF']}
         start={[0, 0]}
         end={[1, 1]}
-        style={styles.container}>
+        style={styles.container}
+      >
         <View style={styles.card}>
           <CheckmarkRow />
 
           {props.isLongBreakMode ? (
-            <View><LongBreak /><LongBreakPlay /></View>
+            <View>
+              <LongBreak />
+              <LongBreakPlay />
+            </View>
           ) : (
             props.isShortBreakMode ? (
-              <View><ShortBreak /><ShortBreakPlay /></View>
+              <View>
+                <ShortBreak />
+                <ShortBreakPlay />
+              </View>
             ) : (
-              <View><Timer /><Play /></View>
+              <View>
+                <Timer />
+                <Play />
+              </View>
             )
           )}
-          
+
         </View>
       </LinearGradient>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -73,12 +83,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
-  return {
-    isShortBreakMode: state.timer.isShortBreakMode,
-    isLongBreakMode: state.timer.isLongBreakMode,
-    ringAlarm: state.alarm.ringAlarm,
-  };
-};
+const mapStateToProps = (state) => ({
+  isShortBreakMode: state.timer.isShortBreakMode,
+  isLongBreakMode: state.timer.isLongBreakMode,
+  ringAlarm: state.alarm.ringAlarm,
+});
 
 export default connect(mapStateToProps)(Index);

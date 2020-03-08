@@ -33,6 +33,5 @@ exports[`Testing Long Break Component should match to snapshot: Long Break snaps
   }
 >
   <Connect(LongBreak) />
-  ,
 </ContextProvider>
 `;

@@ -5,14 +5,14 @@ import Checkmark from '../src/components/Checkmark/Checkmark';
 
 describe('Testing Checkmark Component', () => {
   it('should match to snapshot - True', () => {
-    const wrapper = shallow(<Checkmark check={true} />);
+    const wrapper = shallow(<Checkmark check />);
 
     expect(toJson(wrapper)).toMatchSnapshot('True checkmark snapshot');
   });
 
   it('should match to snapshot - False', () => {
     const wrapper = shallow(<Checkmark check={false} />);
-    
+
     expect(toJson(wrapper)).toMatchSnapshot('False checkmark snapshot');
   });
 });

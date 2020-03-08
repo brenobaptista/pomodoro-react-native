@@ -30,19 +30,19 @@ const timerReducer = (state = initialState, action) => {
         ...state,
         isShortBreakMode: true,
         timer: 1500,
-      }
+      };
     case actionTypes.LONG_BREAK_MODE:
       return {
         ...state,
         isLongBreakMode: true,
         timer: 1500,
-      }
+      };
     case actionTypes.TIMER_MODE:
       return {
         ...state,
         isShortBreakMode: false,
         isLongBreakMode: false,
-      }
+      };
     default:
       return state;
   }

@@ -33,6 +33,5 @@ exports[`Testing Short Break Component should match to snapshot: Short Break sna
   }
 >
   <Connect(ShortBreak) />
-  ,
 </ContextProvider>
 `;

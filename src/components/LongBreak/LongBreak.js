@@ -5,33 +5,34 @@ import { connect } from 'react-redux';
 
 import formatNumber from '../../utils/formatNumber';
 
-const LongBreak = (props) => {
-  return (
-    <View>
-      <View style={{ top: 20 }}>
-        <Text style={styles.timerText}>
-          LONG BREAK
-        </Text>
-      </View>
-      <View style={{ top: 120 }}>
-        <Text style={styles.timerText}>
-          {formatNumber(Math.floor(props.longBreak / 60))} :{' '}
-          {formatNumber(props.longBreak % 60)}
-        </Text>
-      </View>
-      <View style={styles.timerContainer}>
-        <AnimatedProgressWheel
-          size={200}
-          width={5}
-          progress={(props.longBreak / props.initialLongBreak) * 100}
-          color={'tomato'}
-          fullColor={'#94EFFF'}
-          backgroundColor={'#ccc'}
-        />
-      </View>
+const LongBreak = (props) => (
+  <View>
+    <View style={{ top: 20 }}>
+      <Text style={styles.timerText}>
+        LONG BREAK
+      </Text>
     </View>
-  );
-}
+    <View style={{ top: 120 }}>
+      <Text style={styles.timerText}>
+        {formatNumber(Math.floor(props.longBreak / 60))}
+        {' '}
+        :
+        {' '}
+        {formatNumber(props.longBreak % 60)}
+      </Text>
+    </View>
+    <View style={styles.timerContainer}>
+      <AnimatedProgressWheel
+        size={200}
+        width={5}
+        progress={(props.longBreak / props.initialLongBreak) * 100}
+        color="tomato"
+        fullColor="#94EFFF"
+        backgroundColor="#ccc"
+      />
+    </View>
+  </View>
+);
 
 const styles = StyleSheet.create({
   timerContainer: {
@@ -46,11 +47,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
-  return {
-    longBreak: state.longBreak.longBreak,
-    initialLongBreak: state.longBreak.initialLongBreak,
-  };
-};
+const mapStateToProps = (state) => ({
+  longBreak: state.longBreak.longBreak,
+  initialLongBreak: state.longBreak.initialLongBreak,
+});
 
 export default connect(mapStateToProps)(LongBreak);

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import {
+  View, StyleSheet, TouchableOpacity, Alert,
+} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 
@@ -56,7 +58,8 @@ class ShortBreakPlay extends Component {
                 );
               }
               this.props.changePlayShortBreak();
-            }}>
+            }}
+          >
             {this.props.playPressed ? (
               <FontAwesome5
                 name="stop"
@@ -102,26 +105,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
-  return {
-    playPressed: state.shortBreak.playPressed,
-    shortBreak: state.shortBreak.shortBreak,
-    initialShortBreak: state.shortBreak.initialShortBreak,
-  };
-};
+const mapStateToProps = (state) => ({
+  playPressed: state.shortBreak.playPressed,
+  shortBreak: state.shortBreak.shortBreak,
+  initialShortBreak: state.shortBreak.initialShortBreak,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changePlayShortBreak: () =>
-      dispatch({ type: actionTypes.CHANGE_PLAY_SHORT_BREAK }),
-    decreaseTimerShortBreak: () =>
-      dispatch({ type: actionTypes.DECREASE_TIMER_SHORT_BREAK }),
-    resetTimerShortBreak: () =>
-      dispatch({ type: actionTypes.RESET_TIMER_SHORT_BREAK }),
-    timerMode: () => dispatch({ type: actionTypes.TIMER_MODE }),
-    activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
-    cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  changePlayShortBreak: () => dispatch({ type: actionTypes.CHANGE_PLAY_SHORT_BREAK }),
+  decreaseTimerShortBreak: () => dispatch({ type: actionTypes.DECREASE_TIMER_SHORT_BREAK }),
+  resetTimerShortBreak: () => dispatch({ type: actionTypes.RESET_TIMER_SHORT_BREAK }),
+  timerMode: () => dispatch({ type: actionTypes.TIMER_MODE }),
+  activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
+  cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShortBreakPlay);

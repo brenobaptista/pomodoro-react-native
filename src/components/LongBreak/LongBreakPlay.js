@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import {
+  View, StyleSheet, TouchableOpacity, Alert,
+} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { connect } from 'react-redux';
 
@@ -57,7 +59,8 @@ class LongBreakPlay extends Component {
                 );
               }
               this.props.changePlayLongBreak();
-            }}>
+            }}
+          >
             {this.props.playPressed ? (
               <FontAwesome5
                 name="stop"
@@ -103,27 +106,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
-  return {
-    playPressed: state.longBreak.playPressed,
-    longBreak: state.longBreak.longBreak,
-    initialLongBreak: state.longBreak.initialLongBreak,
-  };
-};
+const mapStateToProps = (state) => ({
+  playPressed: state.longBreak.playPressed,
+  longBreak: state.longBreak.longBreak,
+  initialLongBreak: state.longBreak.initialLongBreak,
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changePlayLongBreak: () =>
-      dispatch({ type: actionTypes.CHANGE_PLAY_LONG_BREAK }),
-    decreaseTimerLongBreak: () =>
-      dispatch({ type: actionTypes.DECREASE_TIMER_LONG_BREAK }),
-    resetTimerLongBreak: () =>
-      dispatch({ type: actionTypes.RESET_TIMER_LONG_BREAK }),
-    timerMode: () => dispatch({ type: actionTypes.TIMER_MODE }),
-    resetCheckmarks: () => dispatch({ type: actionTypes.RESET_CHECKMARKS }),
-    activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
-    cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  changePlayLongBreak: () => dispatch({ type: actionTypes.CHANGE_PLAY_LONG_BREAK }),
+  decreaseTimerLongBreak: () => dispatch({ type: actionTypes.DECREASE_TIMER_LONG_BREAK }),
+  resetTimerLongBreak: () => dispatch({ type: actionTypes.RESET_TIMER_LONG_BREAK }),
+  timerMode: () => dispatch({ type: actionTypes.TIMER_MODE }),
+  resetCheckmarks: () => dispatch({ type: actionTypes.RESET_CHECKMARKS }),
+  activateAlarm: () => dispatch({ type: actionTypes.ACTIVATE_ALARM }),
+  cancelAlarm: () => dispatch({ type: actionTypes.CANCEL_ALARM }),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LongBreakPlay);
